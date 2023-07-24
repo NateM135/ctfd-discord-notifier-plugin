@@ -2,7 +2,7 @@
 
 **unfinished, will finish within a week**
 
-Inspirired by [sigpwny's plugin](https://github.com/sigpwny/ctfd-discord-webhook-plugin/tree/master) that no longer worked in ctfd version 3.5.3.
+Inspirired by [sigpwny's plugin](https://github.com/sigpwny/ctfd-discord-webhook-plugin/tree/master) that no longer works in ctfd version 3.5.3.
 
 This plugin (when finished) will allow you to setup a discord webhook that will be used to send notifications about solves in Discord.
 
