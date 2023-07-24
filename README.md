@@ -1,6 +1,6 @@
 #  ctfd-discord-notifier-plugin
 
-**unfinished, will finish within a week**
+**unfinished, i plan to add a good config menu within ctfd itself. if you change hardcoded values this is usable now though**
 
 Inspirired by [sigpwny's plugin](https://github.com/sigpwny/ctfd-discord-webhook-plugin/tree/master) that no longer works in ctfd version 3.5.3.
 

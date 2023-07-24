@@ -5,6 +5,8 @@ from CTFd.models import Challenges, Solves
 from CTFd.utils import config as ctfd_config
 from CTFd.utils.user import get_current_team, get_current_user
 
+from discord_webhook import DiscordWebhook, DiscordEmbed
+
 def load(app):
     print("Loading discord webhook extension...")
 
@@ -42,6 +44,11 @@ def load(app):
                 solvers = solvers.filter(Solves.user.has(hidden=False))
             num_solves = solvers.count()
             print(f"Solve Count: {num_solves}")
+
+            webhook = DiscordWebhook("")
+            embed = DiscordEmbed(description=f"🩸 {get_current_user().name} has gotten solve # {num_solves} on challenge {challenge.name}")
+            webhook.add_embed(embed)
+            webhook.execute()
 
             return result
         return wrapper
