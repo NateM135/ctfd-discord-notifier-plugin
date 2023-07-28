@@ -1,0 +1,29 @@
+{% extends "admin/base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Change Webhook URL</h1>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<form id="thunderpush_notify" method="POST" action="#">
+					<div class="form-group">
+						<label>Discord Webhook URL</label>
+						<input class="form-control" type="text" name="title" value="https://discord.com/api/webhooks/*" placeholder="Notification Title">
+					</div>
+					<input id="nonce" name='nonce' type='hidden' value="{{ nonce }}">
+					<div class="float-right">
+						<button type="submit" class="btn btn-success text-center">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,8 +1,18 @@
 from functools import wraps
-from flask import request
+from flask import (
+    abort,
+    request,
+    render_template,
+    redirect,
+    jsonify,
+    Blueprint,
+    url_for,
+    Response
+)
 
 from CTFd.models import Challenges, Solves
 from CTFd.utils import config as ctfd_config
+from CTFd.utils.decorators import admins_only
 from CTFd.utils.user import get_current_team, get_current_user
 
 from discord_webhook import DiscordWebhook, DiscordEmbed
@@ -10,6 +20,19 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 def load(app):
     print("Loading discord webhook extension...")
 
+    config_webhook = Blueprint('config_webhook', __name__, template_folder='templates')
+
+    @config_webhook.route('/admin/config_webhook', methods=['GET', 'POST'])
+    @admins_only
+    def config_webhook_route():
+        if request.method == 'GET':
+            return render_template('webhook_config.html')
+        elif request.method == 'POST':
+            return '', 200
+
+    app.register_blueprint(config_webhook)
+
+    print("Creating challenge decorators...")
     def challenge_attempt_decorator(f):
         @wraps(f)
         def wrapper(*args, **kwargs):
