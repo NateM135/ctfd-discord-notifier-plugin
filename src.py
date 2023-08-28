@@ -19,7 +19,7 @@ def load(app):
         def wrapper(*args, **kwargs):
 
             # dont break challenge creation, teehee
-            if request.method != "PATCH":
+            if request.method != "POST":
                 return f(*args, **kwargs)
 
             # Run function first so we know result of submission
