@@ -17,6 +17,11 @@ def load(app):
     def challenge_attempt_decorator(f):
         @wraps(f)
         def wrapper(*args, **kwargs):
+
+            # dont break challenge creation, teehee
+            if request.method != "PATCH":
+                return f(*args, **kwargs)
+
             # Run function first so we know result of submission
             result = f(*args, **kwargs)
 
